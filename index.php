@@ -29,8 +29,8 @@ try {
     Capsule::schema()->dropIfExists('categories');
     Capsule::schema()->create('categories', function ($table) {
         /** @var Blueprint $table */
-        $table->increments('id');
-        $table->integer('parent_id');
+        $table->bigIncrements('id');
+        $table->unsignedBigInteger('parent_id');
         $table->tinyInteger('status')->default(0);
         $table->string('name');
         $table->string('code')->unique();
@@ -45,8 +45,8 @@ try {
     Capsule::schema()->dropIfExists('products');
     Capsule::schema()->create('products', function ($table) {
         /** @var Blueprint $table */
-        $table->increments('id');
-        $table->integer('categories_id');
+        $table->bigIncrements('id');
+        $table->unsignedBigInteger('categories_id');
         $table->tinyInteger('status')->default(0);
         $table->string('name');
         $table->string('code')->unique();
@@ -63,8 +63,8 @@ try {
     Capsule::schema()->dropIfExists('products_images');
     Capsule::schema()->create('products_images', function ($table) {
         /** @var Blueprint $table */
-        $table->increments('id');
-        $table->integer('product_id');
+        $table->bigIncrements('id');
+        $table->unsignedBigInteger('product_id');
         $table->string('image');
         $table->timestamps();
     });
